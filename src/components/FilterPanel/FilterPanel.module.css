@@ -1,0 +1,8 @@
+.filterPanelContainer {
+    display: flex;
+    height: 75vh;
+    width: 400px;
+    padding: 20px;
+    color: black;
+    background-color: white;
+}

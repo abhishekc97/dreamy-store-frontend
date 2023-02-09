@@ -1,0 +1,18 @@
+.footerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1920px;
+    height: 100px;
+    background-color: black;
+    color: white;
+}
+
+.footerText {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.greentext {
+    color: green;
+}
