@@ -4,7 +4,8 @@
     margin: 0px;
     padding: 20px;
     width: 1460px;
-    height: 80vh;
+    height: 100%;
+    overflow: hidden;
     overflow-y: scroll;
     background-color: white;
 }
@@ -43,4 +44,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.product {
+    color: black;
 }
