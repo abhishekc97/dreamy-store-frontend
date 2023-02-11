@@ -10,7 +10,7 @@
     background-color: white;
 }
 
-.viewOptions{
+.viewOptions {
     display: flex;
     flex-direction: row;
     margin: 10px;
@@ -19,6 +19,84 @@
     width: 1360px;
     border: 1px solid #ebf0f5;
     border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.gridIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    width: 24px;
+    height: 24px;
+    
+    background: url("../../../public/images/grid.png") no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-blend-mode: lighten;
+    background-repeat: no-repeat;
+    
+    border: solid 1px #ebf0f5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gridIcon {
+    height: 24px;
+    width: 24px;
+    background: url("../../../public/images/grid.png") no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-blend-mode: lighten;
+    background-repeat: no-repeat;
+}
+
+.listIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    width: 24px;
+    height: 24px;
+    
+    background: url("../../../public/images/list.png") no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-blend-mode: lighten;
+    background-repeat: no-repeat;
+
+    border: solid 1px #ebf0f5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.listIcon {
+    height: 24px;
+    width: 24px;
+    
+}
+.productCount {
+    margin: 0px 30px 0px 30px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    letter-spacing: 0.7px;
+}
+
+.line {
+    margin: 0px 30px 0px 30px;
+    width: 50%;
+    padding-top: 10px;
+}
+
+.filterDropwdown {
+    margin: 0px 30px 0px 30px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
 }
 
 .productsContainer {
@@ -32,18 +110,66 @@
     padding: 20px 20px;
 }
 
-.productGrid{
+.productsGrid{
     display: grid;
     flex-direction: row;
     align-items: center;
     grid-template-columns: repeat(3,1fr);
     grid-gap: 10px;
+    height: 90%;
+    margin: 10px;
+}
+
+.productGridBox {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 390px;
+    /* background-color: rgb(113, 216, 113); */
+    align-items: center;
+    justify-content: center;
+    margin: 2px
+}
+
+.gridImage {
+    height: 200px;
+    width: 385px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.gridProductDetails {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .productsList {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 90vh;
+    margin: 10px;
+}
+
+.productListBox {
+    display: flex;
+    height: 250px;
+    width: 1260px;
+    background-color: rgb(134, 185, 185);
+}
+
+.listImage {
+    height: 200px;
+    width: 350px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.listProductDetails {
+    
 }
 
 .product {

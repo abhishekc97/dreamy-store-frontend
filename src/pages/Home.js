@@ -10,36 +10,42 @@ function Home() {
 		category: '',
 		brand: '',
 		color: '',
-		price: { min: 0, max: 30000 },
+		price: { min: 0, max: 32000 },
 		freeShipping: '',
 	});
 
 	useEffect(() => {
-		console.log("Home", filters);
+		// console.log("Home", filters);
 	}, [filters]);
 	
 	const [productsList, setProductsList] = useState([]);
-
-	
+	const [searchTerm, setSearchterm] = useState("");
 
 	async function fetchFilteredResults() {
 		const results = await getFilteredResults(filters.category, filters.brand, filters.color, filters.price.max, filters.freeShipping);
-		console.log(results);
+		// console.log(results);
 		setProductsList(results);
 	}
-
+	
 	useEffect(() => {
-		fetchFilteredResults();
+		// console.log("filters.category", filters.category);
+		if(filters.category !== "") {
+			setTimeout(() => fetchFilteredResults(), 100);
+		}
 	}, [filters]);
+
+	function handleSearchterm(value) {
+		setSearchterm(value);
+	}
 
     return (
         <div className={styles.homeContainer}>
             <FilterPanel 
 			filters={filters}
 			setFilters={setFilters}
-			
+			handleSearchterm={handleSearchterm}
 			/>
-            <Products productsList={productsList}/>
+            <Products productsList={productsList} searchTerm={searchTerm} />
         </div>
     );
 }

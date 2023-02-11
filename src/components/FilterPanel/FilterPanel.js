@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getBrands, getCategories, getColors } from "../../api/operations";
 import styles from "./FilterPanel.module.css";
 
-function FilterPanel({ filters, setFilters }) {
+function FilterPanel({ filters, setFilters, handleSearchterm }) {
     const handleFilterChange = (filterType, value) => {
         setFilters({
             ...filters,
@@ -11,7 +11,7 @@ function FilterPanel({ filters, setFilters }) {
     };
 
     useEffect(() => {
-        console.log("Panel", filters);
+        // console.log("Panel", filters);
     }, [filters]);
 
     const [categoryList, setCategoryList] = useState([]);
@@ -38,25 +38,20 @@ function FilterPanel({ filters, setFilters }) {
         fetchCategories();
         fetchBrands();
         fetchColors();
-        console.log(
-            "categoryList",
-            categoryList,
-            "brandslist",
-            brandsList,
-            "colorslist",
-            colorsList
-        );
     }, []);
-    // console.log("categoryList", categoryList, "brandslist", brandsList, "colorslist", colorsList);
+
+	function onchangeSearch(e) {
+		let text = e.target.value;
+		handleSearchterm(text);
+	}
 
     return (
         <div className={styles.filterPanelContainer}>
-            <h3>Filter Panel</h3>
             <div className={styles.searchboxContainer}>
-                <input type="text" placeholder="search..." />
+                <input type="text" placeholder="Search.." onChange={onchangeSearch}/>
             </div>
             <div className={styles.categoryContainer}>
-                <label htmlFor="category">Category:</label>
+                <label htmlFor="category" style={{"color":"black"}}><b>Category</b></label>
                 <div
                     className={
 						filters.category === "all"
@@ -69,14 +64,14 @@ function FilterPanel({ filters, setFilters }) {
                 >
                     All
                 </div>
-                {categoryList && categoryList.map((category, index) => (
+                {categoryList && categoryList.map((category) => (
                     <div
+						key={category._id}
                         className={
                             filters.category === category.name
                                 ? styles.cateoryOptionSelected
                                 : styles.categoryOption
                         }
-                        key={index}
                         // value={category.name}
                         onClick={(e) =>
                             handleFilterChange("category", category.name)
@@ -87,8 +82,7 @@ function FilterPanel({ filters, setFilters }) {
                 ))}
             </div>
             <div className={styles.brandsDropdownContainer}>
-                <label htmlFor="brand">Brand:</label>
-				<br />
+                <label htmlFor="brand"><b>Brand</b></label>
                 <select
                     id="brand"
                     value={filters.brand}
@@ -98,14 +92,14 @@ function FilterPanel({ filters, setFilters }) {
                 >
                     <option value="">All</option>
 					{brandsList && brandsList.map((brand) => (
-							<option value={brand.name}>{brand.name}</option>
+							<option key={brand._id} value={brand.name}>{brand.name}</option>
 						))
 					}
                     
                 </select>
             </div>
             <div className={styles.colorPalette}>
-                <label htmlFor="color">Color:</label>
+                <label htmlFor="color"><b>Color</b></label>
 				<br />
 				<div
                     className={styles.colorOption}
@@ -135,7 +129,7 @@ function FilterPanel({ filters, setFilters }) {
                 ))}
             </div>
             <div className={styles.priceSliderContainer}>
-                <label htmlFor="price">Price:</label>
+                <label htmlFor="price"><b>Price</b></label>
 				<p className={styles.price}>{filters.price.max}</p>
                 <input
                     type="range"
@@ -153,10 +147,11 @@ function FilterPanel({ filters, setFilters }) {
                 />
             </div>
             <div className={styles.freeshippingOptionContainer}>
-                <label htmlFor="freeShipping">Free Shipping:</label>
+                <label htmlFor="freeShipping" ><b>Free Shipping</b></label>
                 <input
                     type="checkbox"
                     id="freeShipping"
+					// defaultChecked={true}
                     checked={filters.freeShipping}
                     onChange={(e) =>
                         handleFilterChange("freeShipping", e.target.checked)

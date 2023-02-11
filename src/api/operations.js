@@ -2,14 +2,14 @@ import axios from "axios";
 
 export async function getFilteredResults(category, brand, color, price, freeshipping) {
     try {
-        console.log(category);
+        // console.log(category);
 
         const reqUrl = `${process.env.REACT_APP_BACKEND_URL}/api/operations/getProducts?category=${category}&brand=${brand}&color=${color}&price=${price}&freeshipping=${freeshipping}`;
         console.log(reqUrl);
         const results = await axios.get(reqUrl);
 
         if(results) {
-            console.log(results);
+            // console.log(results);
             return results.data;
         }
     } catch (error) {
@@ -23,7 +23,7 @@ export async function getCategories() {
         const results = await axios.get(reqUrl);
 
         if(results) {
-            console.log(results);
+            // console.log(results);
             return results.data;
         }
     } catch (error) {
@@ -37,7 +37,7 @@ export async function getBrands() {
         const results = await axios.get(reqUrl);
 
         if(results) {
-            console.log(results);
+            // console.log(results);
             return results.data;
         }
     } catch (error) {
@@ -51,7 +51,7 @@ export async function getColors() {
         const results = await axios.get(reqUrl);
 
         if(results) {
-            console.log(results);
+            // console.log(results);
             return results.data;
         }
     } catch (error) {
