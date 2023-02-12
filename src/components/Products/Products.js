@@ -1,36 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import { ProductContext } from "../../context/ProductProvider";
+
 import styles from "./Products.module.css";
 
-function Products({ productsList, searchTerm }) {
+function Products({ productsList, searchTerm, onSelectProduct }) {
     const search = searchTerm;
-
-    // console.log("search", search, "searchTerm", searchTerm);
-    // console.log("productsList", productsList);
+	const navigate = useNavigate();
+    
     const [filteredProductsList, setFilteredProductsList] = useState([]);
     useEffect(() => {
         setFilteredProductsList(productsList);
     }, [productsList]);
-    // console.log("filteredProductsList", filteredProductsList);
 
     const [sort, setSort] = useState("default");
 
 	function handleSortChange(e) {
 		const sorting = e.target.value;
 		let list = filteredProductsList;
-		// console.log("list", list);
 
 		switch (sorting) {
 			case "asc":
 				setSort("asc");
 				list = list.sort((a, b) => a.price - b.price);
 				setFilteredProductsList(list);
-				// console.log(list);
 				break;
 			case "desc":
 				setSort("desc");
 				list = list.sort((a, b) => b.price - a.price);
 				setFilteredProductsList(list);
-				// console.log(list);
 				break;
 			case "aToZ":
 				setSort("aToZ");
@@ -42,7 +40,6 @@ function Products({ productsList, searchTerm }) {
 				return 0;
 			  });
 			  setFilteredProductsList(list);
-			//   console.log(list);
 			  break;
 			case "zToA":
 				setSort("zToA");
@@ -54,7 +51,6 @@ function Products({ productsList, searchTerm }) {
 				return 0;
 			  });
 			  setFilteredProductsList(list);
-			//   console.log(list);
 			  break;
 			 
 			default:
@@ -77,29 +73,33 @@ function Products({ productsList, searchTerm }) {
                     typeof search === "string" && search.length > 1
                         ? search.toLowerCase()
                         : "";
-                console.log("searchText", searchText);
                 const prodName =
                     typeof product.name === "string"
                         ? product.name.toLowerCase()
                         : "";
-                // console.log("prodName", prodName);
                 return searchText && prodName
                     ? prodName.includes(searchText)
                     : ""; //  && prodName !== searchText;
             });
             setFilteredProductsList(searchFiltered);
-            console.log("searchfiltered", searchFiltered);
         } else if(search.length < 1) {
 			setFilteredProductsList(productsList);
 		}
 
-        // console.log("filteredProductsList ", filteredProductsList);
     }
 
     useEffect(() => {
         applySearchFilter();
-        console.log("filteredProductsList ", filteredProductsList);
     }, [searchTerm]);
+
+    // function handleNavigateToProductPage(productObject) {
+    // }
+
+    const { dispatch } = useContext(ProductContext);
+
+	const selectProduct = (product) => {
+		dispatch({ type: "SELECT_PRODUCT", payload: product });
+	};
 
     return (
         <div className={styles.rightContainer}>
@@ -167,10 +167,15 @@ function Products({ productsList, searchTerm }) {
                             <div
                                 key={product.name}
                                 className={styles.productGridBox}
-								
+                                onClick={() => {
+                                    onSelectProduct(product);
+                                    console.log(product);
+                                }}
+								// onClick={() => selectProduct(product)}
+                                // onClick={()=>navigate(`/${product._id}`)}
                             ><img src={product.images[0]} alt="gridicon" className={styles.gridImage}></img>
                                 <div className={styles.gridProductDetails}>
-									<div>{product.name}</div>
+									<div>{product.name} &nbsp;</div>
 									<div>${product.price}</div>
 								</div>
                             </div>
@@ -181,6 +186,10 @@ function Products({ productsList, searchTerm }) {
                             <div
                                 key={product.name}
                                 className={styles.productListBox}
+								onClick={() => {
+                                    onSelectProduct(product);
+                                    console.log(product);
+                                }}
                             ><img src={product.images[0]} alt="listicon" className={styles.listImage}></img>
                                 <div  className={styles.listProductDetails}>{product.name}</div>
                             </div>
