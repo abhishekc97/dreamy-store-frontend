@@ -176,7 +176,7 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                             ><img src={product.images[0]} alt="gridicon" className={styles.gridImage}></img>
                                 <div className={styles.gridProductDetails}>
 									<div>{product.name} &nbsp;</div>
-									<div>${product.price}</div>
+									<div className={styles.productPrice} >${product.price}</div>
 								</div>
                             </div>
                         ))}
@@ -186,12 +186,17 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                             <div
                                 key={product.name}
                                 className={styles.productListBox}
-								onClick={() => {
+								
+                            ><img src={product.images[0]} alt="listicon" className={styles.listImage}></img>
+                                <div  className={styles.listProductDetails}>
+                                    <div className={styles.productName}> {product.name}</div>
+                                    <div className={styles.price}>${product.price} </div>
+                                    <div className={styles.description}>{product.description} </div>
+                                    <div className={styles.openDetailsBox} onClick={() => {
                                     onSelectProduct(product);
                                     console.log(product);
-                                }}
-                            ><img src={product.images[0]} alt="listicon" className={styles.listImage}></img>
-                                <div  className={styles.listProductDetails}>{product.name}</div>
+                                }}>DETAILS</div>
+                                </div>
                             </div>
                         ))}
                 </div>
