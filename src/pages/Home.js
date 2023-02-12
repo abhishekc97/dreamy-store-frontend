@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../context/ProductProvider";
 
 function Home() {
+	const navigate = useNavigate();
+	const { setSelectedProduct } = useContext(ProductContext);
+	const [productsList, setProductsList] = useState([]);
+    const [searchTerm, setSearchterm] = useState("");
     // state for the filters
     const [filters, setFilters] = useState({
         category: "",
@@ -20,8 +24,7 @@ function Home() {
         // console.log("Home", filters);
     }, [filters]);
 
-    const [productsList, setProductsList] = useState([]);
-    const [searchTerm, setSearchterm] = useState("");
+    
 
     async function fetchFilteredResults() {
         const results = await getFilteredResults(
@@ -45,20 +48,6 @@ function Home() {
     function handleSearchterm(value) {
         setSearchterm(value);
     }
-
-    const navigate = useNavigate();
-
-    // dispatch={dispatch} selectProduct={selectProduct}
-    // const { setSelectedProduct } = useContext(ProductContext);
-
-    // const handleSelectProduct = (product) => {
-    //     setSelectedProduct(product);
-    //     navigate(`/${product._id}`);
-    // };
-
-	// const [selectedProduct, setSelectedProduct] = useState(null);
-
-	const { setSelectedProduct } = useContext(ProductContext);
 
 	function handleSelectProduct(product) {
 		let x = product;

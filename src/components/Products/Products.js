@@ -59,7 +59,7 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
 	}
 
 	useEffect(() => {
-		console.log("changed");
+		// console.log("changed");
 	}, [filteredProductsList])
 	
     const [currentView, setCurrentView] = useState(
@@ -91,9 +91,6 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
     useEffect(() => {
         applySearchFilter();
     }, [searchTerm]);
-
-    // function handleNavigateToProductPage(productObject) {
-    // }
 
     const { dispatch } = useContext(ProductContext);
 
@@ -171,8 +168,6 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                                     onSelectProduct(product);
                                     console.log(product);
                                 }}
-								// onClick={() => selectProduct(product)}
-                                // onClick={()=>navigate(`/${product._id}`)}
                             ><img src={product.images[0]} alt="gridicon" className={styles.gridImage}></img>
                                 <div className={styles.gridProductDetails}>
 									<div>{product.name} &nbsp;</div>

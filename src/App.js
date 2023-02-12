@@ -7,38 +7,16 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import { ProductContext, ProductProvider } from "./context/ProductProvider";
 import "./App.css";
 
-// const initialState = { product: null };
-
-// const productContext = createContext(initialState);
-
-// const productReducer = (state, action) => {
-//     switch (action.type) {
-//         case "SELECT_PRODUCT":
-//             return { ...state, product: action.payload };
-//         default:
-//             return state;
-//     }
-// };
-
 function App() {
-    // const [state, dispatch] = useReducer(productReducer, initialState);
-
-    // const [product, setProduct] = useState();
-    // function handleProduct(value) {
-    //     const product = value;
-    //     setProduct(product);
-    // }
-    //  handleProductOnChange={handleProduct}
-    // product={product}
     const [selectedProduct, setSelectedProduct] = useState({});
 
     return (
-        <div className="App">
-            <Header />
-            <ProductContext.Provider
-                value={{ selectedProduct, setSelectedProduct }}
-            >
+        <ProductContext.Provider
+            value={{ selectedProduct, setSelectedProduct }}
+        >
+            <div className="App">
                 <BrowserRouter>
+                <Header />
                     <Routes>
                         <Route path="/" element={<Home />}></Route>
                         <Route path="/:productId" element={<ProductDetails />}>
@@ -46,9 +24,9 @@ function App() {
                         </Route>
                     </Routes>
                 </BrowserRouter>
-            </ProductContext.Provider>
-            <Footer />
-        </div>
+                <Footer />
+            </div>
+        </ProductContext.Provider>
     );
 }
 
