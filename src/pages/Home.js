@@ -6,10 +6,10 @@ import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../context/ProductProvider";
 
-function Home() {
-	const navigate = useNavigate();
-	const { setSelectedProduct } = useContext(ProductContext);
-	const [productsList, setProductsList] = useState([]);
+function Home({ setLocation }) {
+    const navigate = useNavigate();
+    const { setSelectedProduct } = useContext(ProductContext);
+    const [productsList, setProductsList] = useState([]);
     const [searchTerm, setSearchterm] = useState("");
     // state for the filters
     const [filters, setFilters] = useState({
@@ -23,8 +23,6 @@ function Home() {
     useEffect(() => {
         // console.log("Home", filters);
     }, [filters]);
-
-    
 
     async function fetchFilteredResults() {
         const results = await getFilteredResults(
@@ -49,13 +47,20 @@ function Home() {
         setSearchterm(value);
     }
 
-	function handleSelectProduct(product) {
-		let x = product;
-		console.log(x);
-		setSelectedProduct(x);
-		navigate(`/${product._id}`);
-	};
+    function handleSelectProduct(product) {
+        let x = product;
+        // console.log(x);
+        setSelectedProduct(x);
+        navigate(`/${product._id}`);
+    }
 
+    function changeBreadcrumbs() {
+        setLocation(["Home", "Products"]);
+    }
+
+    useEffect(() => {
+        changeBreadcrumbs();
+    }, []);
 
     return (
         <div className={styles.homeContainer}>

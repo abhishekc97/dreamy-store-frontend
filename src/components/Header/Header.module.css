@@ -13,3 +13,17 @@
     font-size: 30px;
     font-weight: 700;
 }
+
+.breadCrumb:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.breadCrumb {
+    color: rgb(120, 223, 36);
+    cursor: pointer;
+}
+
+.slash {
+    color: rgb(104, 190, 34);
+}

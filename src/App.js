@@ -9,6 +9,7 @@ import "./App.css";
 
 function App() {
     const [selectedProduct, setSelectedProduct] = useState({});
+    const [location, setLocation] = useState(["Home"]);
 
     return (
         <ProductContext.Provider
@@ -16,10 +17,18 @@ function App() {
         >
             <div className="App">
                 <BrowserRouter>
-                <Header />
+                    <Header location={location} />
                     <Routes>
-                        <Route path="/" element={<Home />}></Route>
-                        <Route path="/:productId" element={<ProductDetails />}>
+                        <Route
+                            path="/"
+                            element={<Home setLocation={setLocation} />}
+                        ></Route>
+                        <Route
+                            path="/:productId"
+                            element={
+                                <ProductDetails setLocation={setLocation} />
+                            }
+                        >
                             {" "}
                         </Route>
                     </Routes>

@@ -5,7 +5,7 @@ import ImageGallery from "react-image-gallery";
 import styles from "./ProductDetails.module.css";
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
-function ProductDetails() {
+function ProductDetails({ setLocation }) {
     const { productId } = useParams();
     const navigate = useNavigate();
     // console.log(productId);
@@ -29,12 +29,26 @@ function ProductDetails() {
 
     useEffect(() => {
         storeImages();
-        console.log(imageArray);
+        // console.log(imageArray);
     }, [selectedProduct]);
+
+    function changeBreadcrumbs() {
+        setLocation(["Home", "Products", `${selectedProduct.name}`]);
+    }
+
+    useEffect(() => {
+        changeBreadcrumbs();
+    }, []);
 
     return (
         <div>
-            <button className={styles.backButton} onClick={() => navigate("/")}>
+            <button
+                className={styles.backButton}
+                onClick={() => {
+                    navigate("/");
+                    setLocation(["Home", "Products"]);
+                }}
+            >
                 BACK TO PRODUCTS
             </button>
             <div className={styles.productDetailsContainer}>

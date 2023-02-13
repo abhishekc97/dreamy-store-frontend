@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../../context/ProductProvider";
 
 import styles from "./Products.module.css";
 
 function Products({ productsList, searchTerm, onSelectProduct }) {
     const search = searchTerm;
-	const navigate = useNavigate();
-    
+    const navigate = useNavigate();
+
     const [filteredProductsList, setFilteredProductsList] = useState([]);
     useEffect(() => {
         setFilteredProductsList(productsList);
@@ -15,53 +15,53 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
 
     const [sort, setSort] = useState("default");
 
-	function handleSortChange(e) {
-		const sorting = e.target.value;
-		let list = filteredProductsList;
+    function handleSortChange(e) {
+        const sorting = e.target.value;
+        let list = filteredProductsList;
 
-		switch (sorting) {
-			case "asc":
-				setSort("asc");
-				list = list.sort((a, b) => a.price - b.price);
-				setFilteredProductsList(list);
-				break;
-			case "desc":
-				setSort("desc");
-				list = list.sort((a, b) => b.price - a.price);
-				setFilteredProductsList(list);
-				break;
-			case "aToZ":
-				setSort("aToZ");
-				list = list.sort((a, b) => {
-				const nameA = a.name.toLowerCase();
-				const nameB = b.name.toLowerCase();
-				if (nameA < nameB) return -1;
-				if (nameA > nameB) return 1;
-				return 0;
-			  });
-			  setFilteredProductsList(list);
-			  break;
-			case "zToA":
-				setSort("zToA");
-				list = list.sort((a, b) => {
-				const nameA = a.name.toLowerCase();
-				const nameB = b.name.toLowerCase();
-				if (nameA > nameB) return -1;
-				if (nameA < nameB) return 1;
-				return 0;
-			  });
-			  setFilteredProductsList(list);
-			  break;
-			 
-			default:
-			  break;
-		}
-	}
+        switch (sorting) {
+            case "asc":
+                setSort("asc");
+                list = list.sort((a, b) => a.price - b.price);
+                setFilteredProductsList(list);
+                break;
+            case "desc":
+                setSort("desc");
+                list = list.sort((a, b) => b.price - a.price);
+                setFilteredProductsList(list);
+                break;
+            case "aToZ":
+                setSort("aToZ");
+                list = list.sort((a, b) => {
+                    const nameA = a.name.toLowerCase();
+                    const nameB = b.name.toLowerCase();
+                    if (nameA < nameB) return -1;
+                    if (nameA > nameB) return 1;
+                    return 0;
+                });
+                setFilteredProductsList(list);
+                break;
+            case "zToA":
+                setSort("zToA");
+                list = list.sort((a, b) => {
+                    const nameA = a.name.toLowerCase();
+                    const nameB = b.name.toLowerCase();
+                    if (nameA > nameB) return -1;
+                    if (nameA < nameB) return 1;
+                    return 0;
+                });
+                setFilteredProductsList(list);
+                break;
 
-	useEffect(() => {
-		// console.log("changed");
-	}, [filteredProductsList])
-	
+            default:
+                break;
+        }
+    }
+
+    useEffect(() => {
+        // console.log("changed");
+    }, [filteredProductsList]);
+
     const [currentView, setCurrentView] = useState(
         localStorage.getItem("list") === "true" ? "list" : "grid"
     );
@@ -82,10 +82,9 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                     : ""; //  && prodName !== searchText;
             });
             setFilteredProductsList(searchFiltered);
-        } else if(search.length < 1) {
-			setFilteredProductsList(productsList);
-		}
-
+        } else if (search.length < 1) {
+            setFilteredProductsList(productsList);
+        }
     }
 
     useEffect(() => {
@@ -94,9 +93,9 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
 
     const { dispatch } = useContext(ProductContext);
 
-	const selectProduct = (product) => {
-		dispatch({ type: "SELECT_PRODUCT", payload: product });
-	};
+    const selectProduct = (product) => {
+        dispatch({ type: "SELECT_PRODUCT", payload: product });
+    };
 
     return (
         <div className={styles.rightContainer}>
@@ -138,7 +137,7 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                         name="Filter"
                         value={sort}
                         className={styles.filter}
-						onChange={handleSortChange}
+                        onChange={handleSortChange}
                     >
                         <option value="default" selected disabled>
                             Select
@@ -166,13 +165,20 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                                 className={styles.productGridBox}
                                 onClick={() => {
                                     onSelectProduct(product);
-                                    console.log(product);
+                                    // console.log(product);
                                 }}
-                            ><img src={product.images[0]} alt="gridicon" className={styles.gridImage}></img>
+                            >
+                                <img
+                                    src={product.images[0]}
+                                    alt="gridicon"
+                                    className={styles.gridImage}
+                                ></img>
                                 <div className={styles.gridProductDetails}>
-									<div>{product.name} &nbsp;</div>
-									<div className={styles.productPrice} >${product.price}</div>
-								</div>
+                                    <div>{product.name} &nbsp;</div>
+                                    <div className={styles.productPrice}>
+                                        ${product.price}
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     {currentView === "list" &&
@@ -181,16 +187,32 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                             <div
                                 key={product.name}
                                 className={styles.productListBox}
-								
-                            ><img src={product.images[0]} alt="listicon" className={styles.listImage}></img>
-                                <div  className={styles.listProductDetails}>
-                                    <div className={styles.productName}> {product.name}</div>
-                                    <div className={styles.price}>${product.price} </div>
-                                    <div className={styles.description}>{product.description} </div>
-                                    <div className={styles.openDetailsBox} onClick={() => {
-                                    onSelectProduct(product);
-                                    console.log(product);
-                                }}>DETAILS</div>
+                            >
+                                <img
+                                    src={product.images[0]}
+                                    alt="listicon"
+                                    className={styles.listImage}
+                                ></img>
+                                <div className={styles.listProductDetails}>
+                                    <div className={styles.productName}>
+                                        {" "}
+                                        {product.name}
+                                    </div>
+                                    <div className={styles.price}>
+                                        ${product.price}{" "}
+                                    </div>
+                                    <div className={styles.description}>
+                                        {product.description}{" "}
+                                    </div>
+                                    <div
+                                        className={styles.openDetailsBox}
+                                        onClick={() => {
+                                            onSelectProduct(product);
+                                            console.log(product);
+                                        }}
+                                    >
+                                        DETAILS
+                                    </div>
                                 </div>
                             </div>
                         ))}
