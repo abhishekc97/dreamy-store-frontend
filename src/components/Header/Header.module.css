@@ -2,11 +2,11 @@
     display: flex;
     margin: 0px;
     padding: 30px 60px 30px 60px;
-    width: 1920px;
-    height: 100px;
+    width: 100vw;
+    height: 12%;
     color: white;
-    align-items: flex-start;
-    background-color: rgb(86, 158, 122);
+    align-items: center;
+    background-color: rgb(171 233 202);
 }
 
 .headerText {
@@ -20,10 +20,10 @@
 }
 
 .breadCrumb {
-    color: rgb(120, 223, 36);
+    color: rgb(77, 134, 31);
     cursor: pointer;
 }
 
 .slash {
-    color: rgb(104, 190, 34);
+    color: rgb(95, 156, 45);
 }

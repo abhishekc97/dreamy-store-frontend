@@ -11,6 +11,7 @@ function Home({ setLocation }) {
     const { setSelectedProduct } = useContext(ProductContext);
     const [productsList, setProductsList] = useState([]);
     const [searchTerm, setSearchterm] = useState("");
+
     // state for the filters
     const [filters, setFilters] = useState({
         category: "",
@@ -20,9 +21,7 @@ function Home({ setLocation }) {
         freeShipping: "",
     });
 
-    useEffect(() => {
-        // console.log("Home", filters);
-    }, [filters]);
+    useEffect(() => {}, [filters]);
 
     async function fetchFilteredResults() {
         const results = await getFilteredResults(
@@ -32,12 +31,10 @@ function Home({ setLocation }) {
             filters.price.max,
             filters.freeShipping
         );
-        // console.log(results);
         setProductsList(results);
     }
 
     useEffect(() => {
-        // console.log("filters.category", filters.category);
         if (filters.category !== "") {
             setTimeout(() => fetchFilteredResults(), 100);
         }
@@ -49,7 +46,6 @@ function Home({ setLocation }) {
 
     function handleSelectProduct(product) {
         let x = product;
-        // console.log(x);
         setSelectedProduct(x);
         navigate(`/${product._id}`);
     }

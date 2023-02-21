@@ -1,8 +1,9 @@
 .App {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	height: 100vh;
-	width: 1920px;
-	align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    position: relative;
 }

@@ -5,44 +5,45 @@
     margin-left: 50px;
     padding: 20px 0px 20px 60px;
     align-items: center;
-    height: 80vh;
-    width: 1920px;
+    /* height: 70vh; */
+    width: 100vw;
     overflow: hidden;
 }
 
 .backButton {
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
-    margin-left: 80px;
+    margin-top: 40px;
+    margin-left: 110px;
     height: 30px;
     width: 180px;
     color: white;
     font-size: 15px;
     font-weight: 400;
     border: none;
+    border-radius: 5px;
     padding: 3px 5px 3px 20px;
     background-color: green;
 }
 
 .imagesContainer {
     padding: 10px;
-    height: 700px;
-    width: 700px;
+    height: 36%;
+    width: 36%;
 }
 
 .detailsContainer {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    height: 700px;
-    width: 1000px;
+    height: 36%;
+    width: 52%;
     font-size: 15px;
     gap: 5px;
     align-items: start;
 }
 
-.detailsContainer>div {
+.detailsContainer > div {
     margin: 10px;
     padding-left: 20px;
 }
@@ -54,6 +55,13 @@
     font-size: 30px;
     font-weight: 600;
     color: black;
+}
+
+.productDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .productRating {
@@ -78,15 +86,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 5px;
-
 }
 
-.productText{
+.productText {
     display: flex;
     flex-direction: row;
     padding-right: 20px;
     align-items: center;
-    /* justify-content: space-between; */
     font: 12px;
     font-weight: 400;
     color: gray;

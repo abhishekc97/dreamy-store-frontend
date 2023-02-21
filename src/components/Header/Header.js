@@ -9,7 +9,6 @@ function Header({ location }) {
     function getParameters() {
         if (selectedProduct) {
             setProductName(selectedProduct.name);
-            // console.log(selectedProduct);
         }
     }
     useEffect(() => {

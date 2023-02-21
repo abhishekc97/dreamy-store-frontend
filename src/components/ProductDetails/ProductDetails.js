@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../../context/ProductProvider";
 import ImageGallery from "react-image-gallery";
 import styles from "./ProductDetails.module.css";
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
 function ProductDetails({ setLocation }) {
-    const { productId } = useParams();
     const navigate = useNavigate();
-    // console.log(productId);
 
     const { selectedProduct } = useContext(ProductContext);
 
@@ -29,7 +27,6 @@ function ProductDetails({ setLocation }) {
 
     useEffect(() => {
         storeImages();
-        // console.log(imageArray);
     }, [selectedProduct]);
 
     function changeBreadcrumbs() {
@@ -55,20 +52,18 @@ function ProductDetails({ setLocation }) {
                 {selectedProduct ? (
                     <>
                         <div className={styles.imagesContainer}>
-                            <ImageGallery items={imageArray} />
+                            <ImageGallery
+                                items={imageArray}
+                                showFullscreenButton={false}
+                                showPlayButton={false}
+                                showNav={false}
+                            />
                         </div>
                         <div className={styles.detailsContainer}>
                             <div className={styles.productName}>
                                 {selectedProduct.name}
                             </div>
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
+                            <div className={styles.productDetails}>
                                 <div className={styles.productRating}>
                                     {selectedProduct.averageRating} ⭐
                                 </div>
@@ -83,7 +78,6 @@ function ProductDetails({ setLocation }) {
                             <div className={styles.productDescription}>
                                 {selectedProduct.description}
                             </div>
-
                             <div className={styles.pairBox}>
                                 <div className={styles.type}>
                                     Available Units:

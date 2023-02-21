@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../../context/ProductProvider";
 
 import styles from "./Products.module.css";
 
 function Products({ productsList, searchTerm, onSelectProduct }) {
     const search = searchTerm;
-    const navigate = useNavigate();
 
     const [filteredProductsList, setFilteredProductsList] = useState([]);
     useEffect(() => {
@@ -58,9 +56,7 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
         }
     }
 
-    useEffect(() => {
-        // console.log("changed");
-    }, [filteredProductsList]);
+    useEffect(() => {}, [filteredProductsList]);
 
     const [currentView, setCurrentView] = useState(
         localStorage.getItem("list") === "true" ? "list" : "grid"
@@ -79,7 +75,7 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                         : "";
                 return searchText && prodName
                     ? prodName.includes(searchText)
-                    : ""; //  && prodName !== searchText;
+                    : "";
             });
             setFilteredProductsList(searchFiltered);
         } else if (search.length < 1) {
@@ -165,7 +161,6 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                                 className={styles.productGridBox}
                                 onClick={() => {
                                     onSelectProduct(product);
-                                    // console.log(product);
                                 }}
                             >
                                 <img
