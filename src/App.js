@@ -1,10 +1,10 @@
-import React, { useState, useReducer, createContext } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
-import { ProductContext, ProductProvider } from "./context/ProductProvider";
+import { ProductContext } from "./context/ProductProvider";
 import "./App.css";
 
 function App() {
