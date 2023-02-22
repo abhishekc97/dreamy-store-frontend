@@ -87,12 +87,6 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
         applySearchFilter();
     }, [searchTerm]);
 
-    const { dispatch } = useContext(ProductContext);
-
-    const selectProduct = (product) => {
-        dispatch({ type: "SELECT_PRODUCT", payload: product });
-    };
-
     return (
         <div className={styles.rightContainer}>
             <div className={styles.viewOptions}>

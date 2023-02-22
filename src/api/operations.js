@@ -1,12 +1,19 @@
 import axios from "axios";
 
-export async function getFilteredResults(category, brand, color, price, freeshipping) {
+const URL = process.env.REACT_APP_BACKEND_URL;
+
+export async function getFilteredResults(
+    category,
+    brand,
+    color,
+    price,
+    freeshipping
+) {
     try {
-        const reqUrl = `${process.env.REACT_APP_BACKEND_URL}/api/operations/getProducts?category=${category}&brand=${brand}&color=${color}&price=${price}&freeshipping=${freeshipping}`;
-        // console.log(reqUrl);
+        const reqUrl = `${URL}/api/operations/getProducts?category=${category}&brand=${brand}&color=${color}&price=${price}&freeshipping=${freeshipping}`;
         const results = await axios.get(reqUrl);
 
-        if(results) {
+        if (results) {
             return results.data;
         }
     } catch (error) {
@@ -16,10 +23,10 @@ export async function getFilteredResults(category, brand, color, price, freeship
 
 export async function getCategories() {
     try {
-        const reqUrl = `${process.env.REACT_APP_BACKEND_URL}/api/operations/getCategories`;
+        const reqUrl = `${URL}/api/operations/getCategories`;
         const results = await axios.get(reqUrl);
 
-        if(results) {
+        if (results) {
             return results.data;
         }
     } catch (error) {
@@ -29,10 +36,10 @@ export async function getCategories() {
 
 export async function getBrands() {
     try {
-        const reqUrl = `${process.env.REACT_APP_BACKEND_URL}/api/operations/getBrands`;
+        const reqUrl = `${URL}/api/operations/getBrands`;
         const results = await axios.get(reqUrl);
 
-        if(results) {
+        if (results) {
             return results.data;
         }
     } catch (error) {
@@ -42,10 +49,10 @@ export async function getBrands() {
 
 export async function getColors() {
     try {
-        const reqUrl = `${process.env.REACT_APP_BACKEND_URL}/api/operations/getColors`;
+        const reqUrl = `${URL}/api/operations/getColors`;
         const results = await axios.get(reqUrl);
 
-        if(results) {
+        if (results) {
             return results.data;
         }
     } catch (error) {

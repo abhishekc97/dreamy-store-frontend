@@ -1,20 +1,21 @@
-.productDetailsContainer {
+.productDetailsWrapper {
+    position: relative;
+    max-height: 80vh;
     display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-    margin-left: 50px;
-    padding: 20px 0px 20px 60px;
-    align-items: center;
-    /* height: 70vh; */
-    width: 100vw;
-    overflow: hidden;
+    flex-direction: column;
+}
+
+.backButtonWrapper {
+    display: flex;
+    min-width: 200px;
+    margin-top: 40px;
+    margin-left: 110px;
 }
 
 .backButton {
     display: flex;
     flex-direction: row;
-    margin-top: 40px;
-    margin-left: 110px;
+
     height: 30px;
     width: 180px;
     color: white;
@@ -26,9 +27,19 @@
     background-color: green;
 }
 
+.productDetailsContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 20px 20px 50px;
+    padding: 20px 60px 20px 60px;
+    align-items: center;
+    min-height: 60vh;
+    min-width: 90vw;
+    overflow: hidden;
+}
+
 .imagesContainer {
     padding: 10px;
-    height: 36%;
     width: 36%;
 }
 
@@ -36,7 +47,6 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    height: 36%;
     width: 52%;
     font-size: 15px;
     gap: 5px;
@@ -106,4 +116,9 @@
 .type {
     font-size: large;
     color: black;
+}
+
+.line {
+    width: 100%;
+    padding-top: 10px;
 }

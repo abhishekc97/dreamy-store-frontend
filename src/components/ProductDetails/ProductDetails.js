@@ -38,16 +38,18 @@ function ProductDetails({ setLocation }) {
     }, []);
 
     return (
-        <div>
-            <button
-                className={styles.backButton}
-                onClick={() => {
-                    navigate("/");
-                    setLocation(["Home", "Products"]);
-                }}
-            >
-                BACK TO PRODUCTS
-            </button>
+        <div className={styles.productDetailsWrapper}>
+            <div className={styles.backButtonWrapper}>
+                <button
+                    className={styles.backButton}
+                    onClick={() => {
+                        navigate("/");
+                        setLocation(["Home", "Products"]);
+                    }}
+                >
+                    BACK TO PRODUCTS
+                </button>
+            </div>
             <div className={styles.productDetailsContainer}>
                 {selectedProduct ? (
                     <>
@@ -97,6 +99,9 @@ function ProductDetails({ setLocation }) {
                                 <div className={styles.productText}>
                                     {selectedProduct.brand}
                                 </div>
+                            </div>
+                            <div className={styles.line}>
+                                <hr></hr>
                             </div>
                         </div>
                     </>
