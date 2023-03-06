@@ -131,7 +131,6 @@ function FilterPanel({ filters, setFilters, handleSearchterm }) {
                 <br />
                 <div
                     className={styles.colorOption}
-                    style={{ border: "none" }}
                     onClick={(e) => handleFilterChange("color", "")}
                 >
                     All

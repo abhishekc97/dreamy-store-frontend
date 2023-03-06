@@ -91,23 +91,18 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
         <div className={styles.rightContainer}>
             <div className={styles.viewOptions}>
                 <button
-                    className={styles.gridIconContainer}
-                    style={{
-                        boxShadow:
-                            currentView === "grid" && "0px 0px 0px 3px black",
-                        marginRight: "10px",
-                    }}
+                    className={`${styles.gridIconContainer} ${
+                        currentView === "grid" ? styles.iconShadow : ""
+                    }`}
                     onClick={function () {
                         setCurrentView("grid");
                         localStorage.list = false;
                     }}
                 ></button>
                 <button
-                    className={styles.listIconContainer}
-                    style={{
-                        boxShadow:
-                            currentView === "list" && "0px 0px 0px 3px black",
-                    }}
+                    className={`${styles.listIconContainer} ${
+                        currentView === "list" ? styles.iconShadow : ""
+                    }`}
                     onClick={function () {
                         setCurrentView("list");
                         localStorage.list = true;
@@ -128,8 +123,9 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                         value={sort}
                         className={styles.filter}
                         onChange={handleSortChange}
+                        defaultValue={"default"}
                     >
-                        <option value="default" selected disabled>
+                        <option value="default" disabled>
                             Select
                         </option>
                         <option value="asc">Price (Low to High)</option>
@@ -197,7 +193,6 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                                         className={styles.openDetailsBox}
                                         onClick={() => {
                                             onSelectProduct(product);
-                                            console.log(product);
                                         }}
                                     >
                                         DETAILS
