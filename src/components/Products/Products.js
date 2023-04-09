@@ -66,7 +66,7 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
         if (search && search.length > 0) {
             const searchFiltered = productsList.filter((product) => {
                 const searchText =
-                    typeof search === "string" && search.length > 1
+                    typeof search === "string" && search.length >= 1
                         ? search.toLowerCase()
                         : "";
                 const prodName =
