@@ -117,13 +117,12 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                     <hr></hr>
                 </div>
                 <div className={styles.filterDropwdown}>
-                    Sort By &nbsp;
+                    <div>Sort By</div>
                     <select
                         name="Filter"
                         value={sort}
                         className={styles.filter}
                         onChange={handleSortChange}
-                        defaultValue={"default"}
                     >
                         <option value="default" disabled>
                             Select
@@ -173,11 +172,13 @@ function Products({ productsList, searchTerm, onSelectProduct }) {
                                 key={product.name}
                                 className={styles.productListBox}
                             >
-                                <img
-                                    src={product.images[0]}
-                                    alt="listicon"
-                                    className={styles.listImage}
-                                ></img>
+                                <div className={styles.listImageContainer}>
+                                    <img
+                                        src={product.images[0]}
+                                        alt="listicon"
+                                        className={styles.listImage}
+                                    ></img>
+                                </div>
                                 <div className={styles.listProductDetails}>
                                     <div className={styles.productName}>
                                         {" "}

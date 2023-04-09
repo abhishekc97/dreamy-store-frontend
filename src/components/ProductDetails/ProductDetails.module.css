@@ -1,15 +1,16 @@
 .productDetailsWrapper {
     position: relative;
-    max-height: 80vh;
     display: flex;
     flex-direction: column;
+    height: 84%;
 }
 
 .backButtonWrapper {
     display: flex;
     min-width: 200px;
-    margin-top: 40px;
-    margin-left: 110px;
+    padding-block: 20px;
+    padding-inline: 110px;
+    max-height: 20%;
 }
 
 .backButton {
@@ -29,27 +30,31 @@
 
 .productDetailsContainer {
     display: flex;
-    flex-direction: row;
-    margin: 20px 20px 20px 50px;
-    padding: 20px 60px 20px 60px;
-    align-items: center;
-    min-height: 60vh;
-    min-width: 90vw;
+    padding-block: 20px;
+    padding-inline: 110px;
     overflow: hidden;
+    max-height: 90%;
 }
 
 .imagesContainer {
     padding: 10px;
     width: 36%;
 }
-
+/* trying to limit the height of react image gallery component */
+.imagesContainer > .image-gallery-content .bottom {
+    width: 40%;
+    height: 100%;
+}
+.image-gallery {
+    width: 400px;
+}
 .detailsContainer {
     display: flex;
     flex-direction: column;
     padding: 10px;
+    height: 100%;
     width: 52%;
     font-size: 15px;
-    gap: 5px;
     align-items: start;
 }
 
@@ -121,4 +126,13 @@
 .line {
     width: 100%;
     padding-top: 10px;
+}
+
+@media (max-width: 1500px) {
+    .backButtonWrapper {
+        padding-block: 10px;
+    }
+    .productDetailsContainer {
+        padding-block: 10px;
+    }
 }

@@ -2,26 +2,30 @@
     display: flex;
     flex-direction: column;
     margin: 0px;
-    padding: 20px;
-    width: 76%;
+    padding: 10px;
+    width: 80%;
     height: 100%;
     overflow: hidden auto;
-    /* overflow-y: scroll; */
     background-color: white;
+    position: relative;
 }
 
 .viewOptions {
     display: flex;
     flex-direction: row;
     position: absolute;
-    margin: 10px;
     padding: 0px 20px;
-    height: 60px;
-    min-width: 75%;
+    height: 50px;
+    max-height: 10%;
+    width: 100%;
     border-radius: 5px;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background-color: white;
+}
+
+.viewOptions > button {
+    margin-right: 10px;
 }
 
 .gridIconContainer {
@@ -80,8 +84,8 @@
     width: 24px;
 }
 .productCount {
-    margin: 0px 30px 0px 30px;
-    width: fit-content;
+    padding: 0px 20px;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,62 +95,75 @@
 }
 
 .line {
-    margin: 0px 30px 0px 30px;
+    padding: 0px 20px;
     width: 50%;
-    padding-top: 10px;
 }
 
 .filterDropwdown {
-    margin: 0px 30px 0px 30px;
-    width: fit-content;
+    width: 25%;
     display: flex;
     align-items: center;
+}
+
+.filterDropwdown > div {
+    text-align: center;
+    margin-right: 10px;
 }
 
 .filter {
     border: none;
+    width: 65%;
+    background-color: rgb(242, 243, 244);
 }
 
 .productsContainer {
     display: flex;
-    height: 100vh;
-    min-width: 75%;
+    position: absolute;
+    top: 60px;
+    width: 100%;
     border-radius: 5px;
     align-items: center;
-    margin: 10px;
-    padding: 50px 20px;
+    padding: 10px;
     overflow: hidden auto;
 }
 
 .productsGrid {
-    display: grid;
-    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
-    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     height: 90%;
-    margin: 10px;
+    width: 100%;
 }
 
 .productGridBox {
     display: flex;
     flex-direction: column;
     height: 250px;
-    width: 390px;
+    width: 32%;
     align-items: center;
     justify-content: center;
     margin: 2px;
 }
 
+.productGridBox > img {
+    height: 80%;
+    width: 80%;
+}
+
 .productGridBox:hover {
-    box-shadow: 0px 0px 10px 1px gray;
-    cursor: pointer;
+    background-color: rgb(242, 243, 244);
+    box-shadow: 0px 0px 10px 1px rgb(209, 212, 214);
     border-radius: 5px;
+    cursor: pointer;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
 }
 
 .gridImage {
     height: 200px;
-    width: 385px;
+    width: 100%;
     margin: 5px;
     border-radius: 8px;
 }
@@ -156,7 +173,8 @@
     flex-direction: row;
     height: 30px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 75%;
 }
 
 .productPrice {
@@ -169,28 +187,44 @@
     flex-direction: column;
     align-items: center;
     height: 90%;
+    width: 100%;
     margin: 10px;
     padding: 10px;
 }
 
 .productListBox {
     display: flex;
-    height: 250px;
-    width: 1260px;
+    height: 240px;
+    margin-bottom: 10px;
+    width: 95%;
 }
 
-.listImage {
-    height: 200px;
-    width: 350px;
+.productListBox:hover {
+    background-color: rgb(242, 243, 244);
+    box-shadow: 0px 0px 10px 1px rgb(209, 212, 214);
+    border-radius: 5px;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+
+.listImageContainer {
+    height: 220px;
+    width: 30%;
     margin: 5px;
     border-radius: 8px;
+}
+
+.listImageContainer > img {
+    height: 100%;
+    width: 85%;
 }
 
 .listProductDetails {
     display: flex;
     flex-direction: column;
     height: 200px;
-    width: 1000px;
+    width: 70%;
     margin: 5px;
     padding: 3px 10px 3px 40px;
     align-items: start;
@@ -235,4 +269,17 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+@media (max-width: 1500px) {
+    .productCount {
+        width: 25%;
+        padding: 0 10px;
+    }
+    .line {
+        width: 25%;
+    }
+    .productGridBox {
+        width: 45%;
+    }
 }

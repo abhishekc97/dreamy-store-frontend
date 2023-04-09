@@ -128,7 +128,6 @@ function FilterPanel({ filters, setFilters, handleSearchterm }) {
                 <label htmlFor="color">
                     <b>Color</b>
                 </label>
-                <br />
                 <div
                     className={styles.colorOption}
                     onClick={(e) => handleFilterChange("color", "")}

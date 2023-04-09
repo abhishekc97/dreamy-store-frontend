@@ -28,9 +28,7 @@ function App() {
                             element={
                                 <ProductDetails setLocation={setLocation} />
                             }
-                        >
-                            {" "}
-                        </Route>
+                        ></Route>
                     </Routes>
                 </BrowserRouter>
                 <Footer />

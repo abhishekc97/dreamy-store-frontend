@@ -12,6 +12,7 @@ function ProductDetails({ setLocation }) {
 
     const [imageArray, setImageArray] = useState([]);
 
+    // sets the current products images into the images array, for being displayed
     function storeImages() {
         const images = [];
         selectedProduct &&
@@ -59,6 +60,7 @@ function ProductDetails({ setLocation }) {
                                 showFullscreenButton={false}
                                 showPlayButton={false}
                                 showNav={false}
+                                additionalClass="image-gallery-content"
                             />
                         </div>
                         <div className={styles.detailsContainer}>
